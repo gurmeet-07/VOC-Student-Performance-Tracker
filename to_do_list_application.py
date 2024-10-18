@@ -4,7 +4,7 @@ import json
 import os
 
 
-# ToDo List Class for handling tasks
+# TODO List Class for handling tasks
 class ToDoList:
     def __init__(self, file_name="tasks.json"):
         self.file_name = file_name
