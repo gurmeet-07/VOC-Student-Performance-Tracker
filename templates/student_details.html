@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f8;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .student-info {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #e9f5ff;
+        }
+        .student-info h2 {
+            margin: 0;
+            color: #007bff;
+        }
+        .student-info p {
+            font-size: 16px;
+            color: #555;
+        }
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .grades-table th,
+        .grades-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .grades-table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .average-grade {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Details</h1>
+    <div class="container">
+        <div class="student-info">
+            <h2>{{ student[1] }} (Roll Number: {{ student[0] }})</h2>
+            <p>Here are the grades and average for this student:</p>
+        </div>
+
+        <table class="grades-table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if grades %}
+                    {% for grade in grades %}
+                    <tr>
+                        <td>{{ grade[0] }}</td>
+                        <td>{{ grade[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="2">No grades found for this student.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <div class="average-grade">
+            Average Grade: {{ average if average else 0 }}
+        </div>
+
+        <a href="/" class="back-button">Back to Home</a>
+    </div>
+</body>
+</html>
